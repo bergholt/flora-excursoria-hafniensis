@@ -11,15 +11,20 @@ abstract: >-
   collation rules that recover the printed order, and the eight entries they
   fail to place.
 type: dataset
+version: 1.0.0
+date-released: 2026-08-06
 authors:
   - family-names: Bergholt
     given-names: Kasper
+    orcid: "https://orcid.org/0000-0000-0000-0000"
     city: Copenhagen
     country: DK
     website: "https://bergholt.net"
 repository-code: "https://github.com/bergholt/flora-excursoria-hafniensis"
 url: "https://bergholt.net/flora"
-license: MIT
+license:
+  - MIT
+  - CC-BY-4.0
 keywords:
   - Prolog
   - digital humanities
