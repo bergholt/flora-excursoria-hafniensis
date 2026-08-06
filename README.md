@@ -8,9 +8,7 @@ alphabetical sequence across 233 pages. It prints no translations. Because a
 plant's Latin and its Danish name were set on the same page, the page number
 works as a join key, and part of the Latin–Danish pairing is recoverable by
 computation.
- 
-**Searchable index:** [bergholt.net/flora](https://bergholt.net/flora)
- 
+  
 ## Figures
  
 | | |
