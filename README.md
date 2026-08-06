@@ -271,8 +271,7 @@ made searchable. `index.html` here is the block that page runs.
 
 Drejer, Salomon Thomas Nicolai. *Flora Excursoria Hafniensis*. Sumtibus
 Librariæ Schubothianæ, Kjøbenhavn, 1838. LXV + 339 pp., with an unnumbered
-errata leaf. Transcribed here from a first edition; a scan of another copy is
-on [Google Books](https://books.google.com/books?id=ZNgZAAAAYAAJ).
+errata leaf. Transcribed here from a first edition.
 
 ## License
 
