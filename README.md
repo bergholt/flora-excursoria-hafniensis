@@ -1,13 +1,13 @@
 # excursoria — Flora Excursoria Hafniensis (1838) index, transcribed and analysed in Prolog
  
-Full transcription of the *Index Nominum* to **Salomon Thomas Nicolai Drejer,
-*Flora Excursoria Hafniensis*, Kjøbenhavn 1838**, with a Prolog analysis of it.
+Full transcription of the *Index Nominum* (325 to 339)
+to **Salomon Thomas Nicolai Drejer, *Flora Excursoria Hafniensis*, Kjøbenhavn 1838**, with a Prolog inteface to an interactive archive of it.
  
-The index lists 903 plant names — 501 Latin, 402 Danish — interfiled in one
-alphabetical sequence across 233 pages. It prints no translations. Because a
-plant's Latin and its Danish name were set on the same page, the page number
-works as a join key, and part of the Latin–Danish pairing is recoverable by
-computation.
+The index lists 903 plant names. 501 Latin, 402 Danish, which are interfiled in one
+alphabetical sequence across 233 pages. 
+
+It prints no translations. Because a plant's Latin and its Danish name were set on the same page, the page number
+works as a join key, and part of the Latin–Danish pairing is recoverable by computation.
   
 ## Figures
  
