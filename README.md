@@ -227,8 +227,8 @@ errata leaf. Transcribed here from a first edition.
  
 ## Related
  
-- [bergholt.net/flora](https://bergholt.net/flora) — the essay, and the index made searchable
-- [triptych](https://github.com/bergholt/triptych) — companion repository
+- [bergholt.net/flora](https://bergholt.net/flora) - the essay, and the index made searchable
+- [triptych](https://github.com/bergholt/triptych) - companion repository
 
 ## License
  
