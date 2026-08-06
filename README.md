@@ -1,7 +1,7 @@
 # excursoria
 
-A Prolog reading of the index to *Flora Excursoria Hafniensis*, Salomon Thomas
-Nicolai Drejer, Kjøbenhavn 1838.
+A Prolog reading and interactive digital archive / index of the 'INDEX NOMINUM' section of *Flora Excursoria Hafniensis* by Danish Botanist Salomon Thomas
+Nicolai Drejer published in 1838.
 
 The index prints 903 names in a single alphabetical sequence:
 
