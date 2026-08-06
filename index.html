@@ -1,0 +1,1361 @@
+<!-- =================================================================
+     Index to 'Flora Excursoria Hafniensis', S. T. N. Drejer, 1838.
+     Transcribed in printed order and printed orthography; nothing is
+     corrected here. The letter rail is the index's own alphabet: 25
+     sections, no W and no Y, I and J interfiled, Æ and Ö at the end.
+
+     Sources, and the Prolog reading of the same data:
+     github.com/bergholt/excursoria
+     ================================================================= -->
+
+<section class="fx">
+<style>
+.fx{
+  --fx-rule:rgba(128,128,128,.30); --fx-quiet:rgba(128,128,128,.98);
+  --fx-mark:rgba(128,128,128,.20);
+  margin:2.5rem 0; font-size:.95rem; line-height:1.5;
+  font-variant-numeric:tabular-nums lining-nums;
+}
+@supports (color:color-mix(in srgb,currentColor 50%,transparent)){
+  .fx{ --fx-rule:color-mix(in srgb,currentColor 16%,transparent);
+       --fx-quiet:color-mix(in srgb,currentColor 56%,transparent);
+       --fx-mark:color-mix(in srgb,currentColor 13%,transparent); }
+}
+.fx *{box-sizing:border-box}
+.fx-h{font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--fx-quiet);margin:0 0 .9rem;font-weight:400}
+.fx-h b{font-weight:400;color:inherit}
+
+.fx-bar{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;
+  padding-bottom:.7rem;border-bottom:1px solid var(--fx-rule)}
+.fx-q{flex:1 1 14rem;min-width:0;font:inherit;color:inherit;background:transparent;
+  border:0;border-bottom:1px solid var(--fx-rule);padding:.4rem .1rem;
+  border-radius:0;-webkit-appearance:none;appearance:none;outline-offset:3px}
+.fx-q::placeholder{color:var(--fx-quiet)}
+.fx-q:focus{border-bottom-color:currentColor}
+.fx-seg{display:flex;border:1px solid var(--fx-rule)}
+.fx-seg button{font:inherit;font-size:.78rem;letter-spacing:.05em;
+  color:var(--fx-quiet);background:transparent;border:0;padding:.35rem .7rem;
+  cursor:pointer;border-radius:0}
+.fx-seg button+button{border-left:1px solid var(--fx-rule)}
+.fx-seg button[aria-pressed=true]{color:inherit;background:var(--fx-mark)}
+
+/* The rail is the index's own alphabet, and is meant to be read as one. */
+.fx-rail{display:flex;flex-wrap:wrap;gap:.1rem;padding:.6rem 0 .1rem}
+.fx-rail button{font:inherit;font-size:.74rem;letter-spacing:.08em;
+  color:var(--fx-quiet);background:transparent;border:0;border-radius:0;
+  padding:.15rem .38rem;cursor:pointer;min-width:1.6rem}
+.fx-rail button:hover,.fx-rail button:focus-visible{color:inherit;background:var(--fx-mark)}
+.fx-rail button[disabled]{opacity:.35;cursor:default}
+
+.fx-count{font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--fx-quiet);padding:.55rem 0 .35rem;margin:0}
+.fx-body{max-height:30rem;overflow-y:auto;overscroll-behavior:contain;
+  border-top:1px solid var(--fx-rule);padding-top:.2rem;outline-offset:3px}
+
+.fx-sec{position:sticky;top:0;z-index:1;font-size:.72rem;letter-spacing:.16em;
+  color:var(--fx-quiet);padding:.7rem 0 .25rem;margin:0;font-weight:400;
+  background:var(--fx-bg,transparent);backdrop-filter:blur(6px)}
+.fx-e{display:flex;gap:.5rem;align-items:baseline;width:100%;text-align:left;
+  font:inherit;color:inherit;background:transparent;border:0;border-radius:0;
+  padding:.14rem 0;cursor:pointer}
+.fx-e .n{flex:0 1 auto;min-width:0;overflow-wrap:anywhere}
+.fx-e.la .n{font-style:italic}
+.fx-e .d{flex:1 1 auto;border-bottom:1px dotted var(--fx-rule);
+  transform:translateY(-.22em);min-width:1rem}
+.fx-e .p{flex:0 0 auto;color:var(--fx-quiet);font-size:.85em}
+.fx-e:hover .p,.fx-e:focus-visible .p{color:inherit}
+.fx-e:focus-visible{outline:1px solid currentColor;outline-offset:2px}
+
+.fx-pg{display:grid;grid-template-columns:3.2rem 1fr;gap:0 1rem;
+  padding:.5rem 0;border-top:1px solid var(--fx-rule)}
+.fx-pg:first-child{border-top:0}
+.fx-pg>.no{color:var(--fx-quiet);font-size:.8rem;padding-top:.1rem}
+.fx-pg>.cols{display:grid;grid-template-columns:1fr;gap:.15rem 1.4rem}
+@media (min-width:40rem){.fx-pg>.cols{grid-template-columns:1fr 1fr}}
+.fx-pg .lat{font-style:italic}
+.fx-pg .none{color:var(--fx-quiet);font-style:normal}
+.fx em.hit{font-style:inherit;background:var(--fx-mark);box-shadow:0 0 0 .1em var(--fx-mark)}
+
+.fx-empty{padding:1.4rem 0;color:var(--fx-quiet)}
+.fx-results{list-style:none;margin:0;padding:0}
+.fx-results li{margin:0;padding:0}
+.fx-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.fx-note{margin:.9rem 0 0;padding-top:.7rem;border-top:1px solid var(--fx-rule);
+  font-size:.76rem;line-height:1.65;color:var(--fx-quiet)}
+.fx-note a{color:inherit}
+.fx-note+.fx-note{border-top:0;padding-top:.4rem}
+@media (prefers-reduced-motion:no-preference){.fx-body{scroll-behavior:smooth}}
+
+/* Served state. The list below is real markup, so the block reads as an index
+   and is legible to anything that does not run scripts. The controls do
+   nothing without JS, so they are withheld until it adds .on. */
+.fx-bar,.fx-rail,.fx-count{display:none}
+.fx.on .fx-bar,.fx.on .fx-rail{display:flex}
+.fx.on .fx-count{display:block}
+.fx-l{list-style:none;margin:0;padding:0}
+.fx-l li{display:flex;gap:.5rem;align-items:baseline;padding:.14rem 0}
+.fx-l i{font-style:italic}
+.fx-l b{margin-left:auto;font-weight:400;font-size:.85em;color:var(--fx-quiet)}
+</style>
+
+<!-- BEGIN GENERATED SUMMARY -->
+<h2 class="fx-h">Index &middot; <b>903</b> names &middot; <b>501</b> Latin &middot;
+  <b>402</b> Danish &middot; <b>233</b> pages</h2>
+<!-- END GENERATED SUMMARY -->
+
+<div class="fx-bar">
+  <input id="fx-q" class="fx-q" type="search" autocomplete="off" spellcheck="false"
+         aria-label="Search the index by plant name or page number"
+         placeholder="Search a name, or a page number">
+  <div class="fx-seg" data-control="lang" role="group" aria-label="Language">
+    <button type="button" data-lang="all" aria-pressed="true">Both</button>
+    <button type="button" data-lang="la" aria-pressed="false">Latin</button>
+    <button type="button" data-lang="da" aria-pressed="false">Danish</button>
+  </div>
+  <div class="fx-seg" data-control="view" role="group" aria-label="Arrangement">
+    <button type="button" data-view="az" aria-pressed="true">A&ndash;Z</button>
+    <button type="button" data-view="pp" aria-pressed="false">By page</button>
+  </div>
+</div>
+
+<div class="fx-rail" role="group" aria-label="Jump to a letter of the index's alphabet"></div>
+
+<p class="fx-count" id="fx-count" role="status" aria-live="polite"></p>
+<div class="fx-body" id="fx-body" tabindex="-1" aria-label="Index entries">
+<!-- BEGIN GENERATED INDEX -->
+<h3 class="fx-sec" id="fx-s-a">A</h3>
+<ul class="fx-l">
+<li lang="da">Aakande <b>189</b></li>
+<li lang="la"><i>Abies</i> <b>305</b></li>
+<li lang="la"><i>Acer</i> <b>150</b></li>
+<li lang="la"><i>Achillæa</i> <b>270</b></li>
+<li lang="la"><i>Aconitum</i> <b>190</b></li>
+<li lang="la"><i>Acorus</i> <b>124</b></li>
+<li lang="la"><i>Actæa</i> <b>188</b></li>
+<li lang="la"><i>Adoxa</i> <b>153</b></li>
+<li lang="la"><i>Ægopodium</i> <b>115</b></li>
+<li lang="la"><i>Æthusa</i> <b>117</b></li>
+<li lang="da">Aftenstjerne <b>224</b></li>
+<li lang="da">Agermaane <b>171</b></li>
+<li lang="la"><i>Agrimonia</i> <b>171</b></li>
+<li lang="la"><i>Agropyrum</i> <b>47</b></li>
+<li lang="la"><i>Agrostemma</i> <b>166</b></li>
+<li lang="la"><i>Agrostis</i> <b>25</b></li>
+<li lang="la"><i>Aira</i> <b>32</b></li>
+<li lang="la"><i>Ajuga</i> <b>207</b></li>
+<li lang="da">Akkeleie <b>191</b></li>
+<li lang="da">Alant <b>268</b></li>
+<li lang="la"><i>Alchemilla</i> <b>52</b></li>
+<li lang="la"><i>Alectorolophus</i> <b>209</b></li>
+<li lang="la"><i>Alisma</i> <b>145</b></li>
+<li lang="la"><i>Allium</i> <b>136</b></li>
+<li lang="la"><i>Allosorus</i> <b>318</b></li>
+<li lang="la"><i>Alnus</i> <b>301</b></li>
+<li lang="la"><i>Alopecurus</i> <b>23</b></li>
+<li lang="la"><i>Alsine</i> <b>163</b></li>
+<li lang="la"><i>Alsinella</i> <b>163</b></li>
+<li lang="la"><i>Althæa</i> <b>232</b></li>
+<li lang="la"><i>Alyssum</i> <b>218</b></li>
+<li lang="la"><i>Ammophila</i> <b>28</b></li>
+<li lang="la"><i>Anagallis</i> <b>81</b></li>
+<li lang="la"><i>Anchusa</i> <b>75</b></li>
+<li lang="da">Andemad <b>2</b></li>
+<li lang="la"><i>Andromeda</i> <b>154</b></li>
+<li lang="la"><i>Anemone</i> <b>197</b></li>
+<li lang="la"><i>Angelica</i> <b>113</b></li>
+<li lang="la"><i>Antennaria</i> <b>265</b></li>
+<li lang="la"><i>Anthemis</i> <b>271</b></li>
+<li lang="la"><i>Anthericum</i> <b>136</b></li>
+<li lang="la"><i>Anthoxanthum</i> <b>29</b></li>
+<li lang="la"><i>Anthriscus</i> <b>109</b></li>
+<li lang="la"><i>Anthyllis</i> <b>236</b></li>
+<li lang="la"><i>Antirrhinum</i> <b>212</b></li>
+<li lang="la"><i>Apargia</i> <b>251</b></li>
+<li lang="la"><i>Apium</i> <b>115</b></li>
+<li lang="la"><i>Aqvilegia</i> <b>191</b></li>
+<li lang="la"><i>Arabis</i> <b>220</b></li>
+<li lang="la"><i>Aracium</i> <b>253</b></li>
+<li lang="la"><i>Arbutus</i> <b>155</b></li>
+<li lang="la"><i>Arctium</i> <b>259</b></li>
+<li lang="la"><i>Arctostaphylos</i> <b>155</b></li>
+<li lang="la"><i>Arenaria</i> <b>163</b></li>
+<li lang="la"><i>Armeria</i> <b>120</b></li>
+<li lang="la"><i>Armoracia</i> <b>220</b></li>
+<li lang="la"><i>Arnica</i> <b>267</b></li>
+<li lang="la"><i>Arrhenatherum</i> <b>30</b></li>
+<li lang="la"><i>Artemisia</i> <b>263</b></li>
+<li lang="da">Arve <b>81</b></li>
+<li lang="la"><i>Arum</i> <b>301</b></li>
+<li lang="la"><i>Arundo</i> <b>26</b></li>
+<li lang="la"><i>Asarum</i> <b>171</b></li>
+<li lang="la"><i>Asclepias</i> <b>108</b></li>
+<li lang="da">Ask <b>2</b></li>
+<li lang="la"><i>Asperugo</i> <b>74</b></li>
+<li lang="la"><i>Asperula</i> <b>58</b></li>
+<li lang="la"><i>Aspidium</i> <b>318</b></li>
+<li lang="la"><i>Asplenium</i> <b>315</b></li>
+<li lang="la"><i>Aster</i> <b>268</b></li>
+<li lang="la"><i>Asterocephalus</i> <b>56</b></li>
+<li lang="la"><i>Astragalus</i> <b>242</b></li>
+<li lang="la"><i>Athyrium</i> <b>316</b></li>
+<li lang="la"><i>Atriplex</i> <b>105</b></li>
+<li lang="la"><i>Avena</i> <b>30</b></li>
+<li lang="la"><i>Avenella</i> <b>32</b></li>
+<li lang="da">Avl <b>175</b></li>
+<li lang="da">Avnbög <b>301</b></li>
+<li lang="da">Avnknippe <b>15</b></li>
+</ul>
+<h3 class="fx-sec" id="fx-s-b">B</h3>
+<ul class="fx-l">
+<li lang="da">Bakkestjerne <b>269</b></li>
+<li lang="la"><i>Baldingera</i> <b>25</b></li>
+<li lang="da">Baldrian <b>11</b></li>
+<li lang="la"><i>Ballota</i> <b>205</b></li>
+<li lang="da">Balsamin <b>97</b></li>
+<li lang="la"><i>Barbaræa</i> <b>223</b></li>
+<li lang="da">Barsvælg <b>204</b></li>
+<li lang="la"><i>Bartschia</i> <b>211</b></li>
+<li lang="da">Bede <b>105</b></li>
+<li lang="da">Beenved <b>62</b></li>
+<li lang="la"><i>Bellis</i> <b>269</b></li>
+<li lang="la"><i>Berberis</i> <b>138</b></li>
+<li lang="da">Berle <b>116</b></li>
+<li lang="la"><i>Berula</i> <b>116</b></li>
+<li lang="la"><i>Beta</i> <b>105</b></li>
+<li lang="la"><i>Betonica</i> <b>202</b></li>
+<li lang="la"><i>Betula</i> <b>304</b></li>
+<li lang="la"><i>Bidens</i> <b>262</b></li>
+<li lang="da">Bingelurt <b>313</b></li>
+<li lang="da">Birk <b>304</b></li>
+<li lang="da">Bittermælk <b>252</b></li>
+<li lang="da">Björneklo <b>113</b></li>
+<li lang="da">Blaabær <b>147</b></li>
+<li lang="da">Blaastjerne <b>57</b></li>
+<li lang="da">Bladhoved <b>260</b></li>
+<li lang="la"><i>Blechnum</i> <b>318</b></li>
+<li lang="la"><i>Blitum</i> <b>104</b></li>
+<li lang="la"><i>Blysmus</i> <b>15</b></li>
+<li lang="da">Blærerod <b>4</b></li>
+<li lang="da">Boghvede <b>152</b></li>
+<li lang="la"><i>Borago</i> <b>75</b></li>
+<li lang="da">Borst <b>251</b></li>
+<li lang="la"><i>Botrychium</i> <b>319</b></li>
+<li lang="da">Braadfrö <b>305</b></li>
+<li lang="la"><i>Brachyolobus</i> <b>220</b></li>
+<li lang="la"><i>Brachypodium</i> <b>46</b></li>
+<li lang="da">Brandbæger <b>265</b></li>
+<li lang="la"><i>Brassica</i> <b>226</b></li>
+<li lang="da">Bridurt <b>99</b></li>
+<li lang="la"><i>Briza</i> <b>33</b></li>
+<li lang="la"><i>Bromochloa</i> <b>43</b></li>
+<li lang="la"><i>Bromus</i> <b>37</b></li>
+<li lang="da">Brudelys <b>154</b></li>
+<li lang="da">Brunrod <b>213</b></li>
+<li lang="la"><i>Bryonia</i> <b>306</b></li>
+<li lang="da">Brændeskjærm <b>116</b></li>
+<li lang="da">Bröndkarse <b>224</b></li>
+<li lang="da">Bröndsel <b>262</b></li>
+<li lang="da">Bukkeblad <b>88</b></li>
+<li lang="la"><i>Bulliarda</i> <b>71</b></li>
+<li lang="da">Bulme <b>87</b></li>
+<li lang="la"><i>Bunias</i> <b>216</b></li>
+<li lang="da">Bunke <b>32</b></li>
+<li lang="da">Bunkehavre <b>32</b></li>
+<li lang="la"><i>Buplevrum</i> <b>114</b></li>
+<li lang="da">Burre <b>259</b></li>
+<li lang="da">Busmekker <b>115</b></li>
+<li lang="da">Byg <b>50</b></li>
+<li lang="da">Bynke <b>263</b></li>
+<li lang="da">Bægerbrægne <b>316</b></li>
+<li lang="da">Bændeltang <b>281</b></li>
+<li lang="da">Bævregræs <b>33</b></li>
+<li lang="da">Bög <b>304</b></li>
+<li lang="da">Börsteax <b>51</b></li>
+</ul>
+<h3 class="fx-sec" id="fx-s-c">C</h3>
+<ul class="fx-l">
+<li lang="la"><i>Cakile</i> <b>215</b></li>
+<li lang="la"><i>Calamintha</i> <b>206</b></li>
+<li lang="la"><i>Calla</i> <b>281</b></li>
+<li lang="la"><i>Callitriche</i> <b>281</b></li>
+<li lang="la"><i>Calluna</i> <b>146</b></li>
+<li lang="la"><i>Caltha</i> <b>198</b></li>
+<li lang="la"><i>Camelina</i> <b>221</b></li>
+<li lang="la"><i>Campanula</i> <b>91</b></li>
+<li lang="la"><i>Cannabis</i> <b>311</b></li>
+<li lang="la"><i>Capsella</i> <b>218</b></li>
+<li lang="la"><i>Cardamine</i> <b>222</b></li>
+<li lang="la"><i>Carlina</i> <b>258</b></li>
+<li lang="la"><i>Carduus</i> <b>261</b></li>
+<li lang="la"><i>Carex</i> <b>284</b></li>
+<li lang="la"><i>Carpinus</i> <b>304</b></li>
+<li lang="la"><i>Carum</i> <b>115</b></li>
+<li lang="la"><i>Catabrosa</i> <b>39</b></li>
+<li lang="la"><i>Caucalis</i> <b>109</b></li>
+<li lang="la"><i>Centaurea</i> <b>271</b></li>
+<li lang="la"><i>Centinodium</i> <b>151</b></li>
+<li lang="la"><i>Centunculus</i> <b>55</b></li>
+<li lang="la"><i>Cephalanthera</i> <b>277</b></li>
+<li lang="la"><i>Cerastium</i> <b>167</b></li>
+<li lang="la"><i>Cerasus</i> <b>173</b></li>
+<li lang="la"><i>Ceratophyllum</i> <b>303</b></li>
+<li lang="la"><i>Chærophyllum</i> <b>111</b></li>
+<li lang="la"><i>Chamænerium</i> <b>148</b></li>
+<li lang="la"><i>Chamæplium</i> <b>225</b></li>
+<li lang="la"><i>Chelidonium</i> <b>187</b></li>
+<li lang="la"><i>Chenopodium</i> <b>100</b></li>
+<li lang="la"><i>Chrysanthemum</i> <b>269</b></li>
+<li lang="la"><i>Chrysosplenium</i> <b>157</b></li>
+<li lang="la"><i>Cichorium</i> <b>251</b></li>
+<li lang="la"><i>Cicuta</i> <b>116</b></li>
+<li lang="la"><i>Cineraria</i> <b>267</b></li>
+<li lang="la"><i>Circæa</i> <b>3</b></li>
+<li lang="la"><i>Cirsium</i> <b>260</b></li>
+<li lang="la"><i>Cistus</i> <b>189</b></li>
+<li lang="la"><i>Cladium</i> <b>15</b></li>
+<li lang="la"><i>Clinopodium</i> <b>206</b></li>
+<li lang="la"><i>Cnidium</i> <b>116</b></li>
+<li lang="la"><i>Cochlearia</i> <b>219</b></li>
+<li lang="la"><i>Cochlidiosperma</i> <b>5</b></li>
+<li lang="la"><i>Codonoprasum</i> <b>137</b></li>
+<li lang="la"><i>Coeloglossum</i> <b>276</b></li>
+<li lang="la"><i>Comarum</i> <b>183</b></li>
+<li lang="la"><i>Conium</i> <b>112</b></li>
+<li lang="la"><i>Convallaria</i> <b>132</b></li>
+<li lang="la"><i>Convolvulus</i> <b>83</b></li>
+<li lang="la"><i>Corallorhiza</i> <b>277</b></li>
+<li lang="la"><i>Cornus</i> <b>62</b></li>
+<li lang="la"><i>Corylus</i> <b>304</b></li>
+<li lang="la"><i>Corydalis</i> <b>233</b></li>
+<li lang="la"><i>Corynephorus</i> <b>32</b></li>
+<li lang="la"><i>Corvisartia</i> <b>268</b></li>
+<li lang="la"><i>Cracca</i> <b>213</b></li>
+<li lang="la"><i>Crambe</i> <b>216</b></li>
+<li lang="la"><i>Cratægus</i> <b>174</b></li>
+<li lang="la"><i>Crepis</i> <b>252</b></li>
+<li lang="la"><i>Cuscuta</i> <b>62</b></li>
+<li lang="la"><i>Cynanchum</i> <b>108</b></li>
+<li lang="la"><i>Cynoglossum</i> <b>74</b></li>
+<li lang="la"><i>Cynosurus</i> <b>45</b></li>
+<li lang="la"><i>Cyperus</i> <b>14</b></li>
+<li lang="la"><i>Cystopteris</i> <b>316</b></li>
+</ul>
+<h3 class="fx-sec" id="fx-s-d">D</h3>
+<ul class="fx-l">
+<li lang="la"><i>Dactylis</i> <b>44</b></li>
+<li lang="la"><i>Datura</i> <b>86</b></li>
+<li lang="la"><i>Delphinium</i> <b>190</b></li>
+<li lang="la"><i>Dentaria</i> <b>223</b></li>
+<li lang="da">Desmerurt <b>153</b></li>
+<li lang="la"><i>Dianthus</i> <b>158</b></li>
+<li lang="la"><i>Dichostylis</i> <b>17</b></li>
+<li lang="la"><i>Digitalis</i> <b>212</b></li>
+<li lang="la"><i>Digraphis</i> <b>25</b></li>
+<li lang="la"><i>Dipsacus</i> <b>55</b></li>
+<li lang="da">Dodder <b>221</b></li>
+<li lang="la"><i>Draba</i> <b>218</b></li>
+<li lang="da">Draphavre <b>30</b></li>
+<li lang="la"><i>Drosera</i> <b>123</b></li>
+<li lang="da">Druehyacinth <b>134</b></li>
+<li lang="da">Druemunke <b>188</b></li>
+<li lang="da">Dueurt <b>148</b></li>
+<li lang="da">Dunhammer <b>284</b></li>
+<li lang="da">Dyndurt <b>213</b></li>
+</ul>
+<h3 class="fx-sec" id="fx-s-e">E</h3>
+<ul class="fx-l">
+<li lang="la"><i>Echinops</i> <b>272</b></li>
+<li lang="la"><i>Echinospermum</i> <b>74</b></li>
+<li lang="la"><i>Echium</i> <b>71</b></li>
+<li lang="da">Edderkopurt <b>137</b></li>
+<li lang="da">Eeg <b>304</b></li>
+<li lang="la"><i>Elatine</i> <b>152</b></li>
+<li lang="la"><i>Elsholzia</i> <b>201</b></li>
+<li lang="la"><i>Elymus</i> <b>50</b></li>
+<li lang="la"><i>Empetrum</i> <b>310</b></li>
+<li lang="da">Ene <b>311</b></li>
+<li lang="da">Engblomme <b>198</b></li>
+<li lang="da">Engelsöd <b>314</b></li>
+<li lang="la"><i>Enodium</i> <b>40</b></li>
+<li lang="da">Entian <b>88</b></li>
+<li lang="la"><i>Epigogium</i> <b>280</b></li>
+<li lang="la"><i>Epilobium</i> <b>148</b></li>
+<li lang="la"><i>Epipactis</i> <b>279</b></li>
+<li lang="la"><i>Eqvisetum</i> <b>320</b></li>
+<li lang="la"><i>Eranthis</i> <b>198</b></li>
+<li lang="la"><i>Erica</i> <b>146</b></li>
+<li lang="la"><i>Erigeron</i> <b>269</b></li>
+<li lang="la"><i>Eriophorum</i> <b>18</b></li>
+<li lang="la"><i>Erodium</i> <b>227</b></li>
+<li lang="la"><i>Eryngium</i> <b>119</b></li>
+<li lang="la"><i>Erysimum</i> <b>224</b></li>
+<li lang="la"><i>Erythræa</i> <b>89</b></li>
+<li lang="da">Esparsette <b>242</b></li>
+<li lang="la"><i>Euonymus</i> <b>62</b></li>
+<li lang="la"><i>Eupatorium</i> <b>261</b></li>
+<li lang="la"><i>Euphorbia</i> <b>283</b></li>
+<li lang="la"><i>Euphrasia</i> <b>210</b></li>
+<li lang="da">Evighedsblomst <b>265</b></li>
+</ul>
+<h3 class="fx-sec" id="fx-s-f">F</h3>
+<ul class="fx-l">
+<li lang="da">Faareleger <b>120</b></li>
+<li lang="la"><i>Fagopyrum</i> <b>152</b></li>
+<li lang="la"><i>Fagus</i> <b>301</b></li>
+<li lang="la"><i>Fedia</i> <b>12</b></li>
+<li lang="da">Femling <b>169</b></li>
+<li lang="da">Festgræs <b>29</b></li>
+<li lang="la"><i>Festuca</i> <b>41</b></li>
+<li lang="la"><i>Ficaria</i> <b>191</b></li>
+<li lang="da">Fiirblad <b>153</b></li>
+<li lang="da">Fiirling <b>170</b></li>
+<li lang="la"><i>Filago</i> <b>264</b></li>
+<li lang="da">Fladax <b>14</b></li>
+<li lang="da">Fladbælle <b>245</b></li>
+<li lang="da">Fladknap <b>272</b></li>
+<li lang="da">Fladstjerne <b>161</b></li>
+<li lang="da">Fliglæbe <b>276</b></li>
+<li lang="da">Flipkrave <b>216</b></li>
+<li lang="da">Flitterax <b>33</b></li>
+<li lang="da">Fnokurt <b>267</b></li>
+<li lang="da">Fodangel <b>109</b></li>
+<li lang="da">Foldfrö <b>112</b></li>
+<li lang="da">Forgjetmigei <b>76</b></li>
+<li lang="la"><i>Fragaria</i> <b>183</b></li>
+<li lang="la"><i>Fraxinus</i> <b>2</b></li>
+<li lang="da">Fredlös <b>81</b></li>
+<li lang="la"><i>Fritillaria</i> <b>134</b></li>
+<li lang="da">Fröbid <b>313</b></li>
+<li lang="da">Fröstjerne <b>195</b></li>
+<li lang="da">Fugleklo <b>242</b></li>
+<li lang="da">Fugleknude <b>151</b></li>
+<li lang="da">Fugleliim <b>310</b></li>
+<li lang="da">Fuglemælk <b>136</b></li>
+<li lang="da">Fuglerede <b>278</b></li>
+<li lang="la"><i>Fumaria</i> <b>232</b></li>
+<li lang="da">Fyr <b>305</b></li>
+<li lang="da">Fölfod <b>263</b></li>
+</ul>
+<h3 class="fx-sec" id="fx-s-g">G</h3>
+<ul class="fx-l">
+<li lang="da">Gaasefod <b>100</b></li>
+<li lang="da">Gaasemad <b>222</b></li>
+<li lang="da">Gabeklap <b>225</b></li>
+<li lang="la"><i>Gagea</i> <b>134</b></li>
+<li lang="la"><i>Galanthus</i> <b>133</b></li>
+<li lang="da">Galdebær <b>306</b></li>
+<li lang="la"><i>Galeobdolon</i> <b>204</b></li>
+<li lang="la"><i>Galeopsis</i> <b>201</b></li>
+<li lang="la"><i>Galium</i> <b>58</b></li>
+<li lang="da">Galtetand <b>202</b></li>
+<li lang="da">Gedeblad <b>93</b></li>
+<li lang="da">Gederams <b>148</b></li>
+<li lang="da">Gedeskjæg <b>258</b></li>
+<li lang="la"><i>Gentiana</i> <b>88</b></li>
+<li lang="la"><i>Geranium</i> <b>227</b></li>
+<li lang="la"><i>Geum</i> <b>186</b></li>
+<li lang="da">Gifttyde <b>116</b></li>
+<li lang="da">Gjæslingblomst <b>218</b></li>
+<li lang="da">Gjögemad <b>230</b></li>
+<li lang="da">Gjögeurt <b>273</b></li>
+<li lang="la"><i>Glaux</i> <b>83</b></li>
+<li lang="la"><i>Glechoma</i> <b>203</b></li>
+<li lang="la"><i>Glyceria</i> <b>40</b></li>
+<li lang="la"><i>Gnaphalium</i> <b>265</b></li>
+<li lang="da">Godtraad <b>145</b></li>
+<li lang="da">Gran <b>305</b></li>
+<li lang="da">Gulddusk <b>83</b></li>
+<li lang="da">Guldstjerne <b>134</b></li>
+<li lang="da">Gulerod <b>112</b></li>
+<li lang="da">Guulax <b>29</b></li>
+<li lang="da">Gyclqvæler <b>214</b></li>
+<li lang="da">Gyldenriis <b>268</b></li>
+<li lang="la"><i>Gymnadenia</i> <b>275</b></li>
+<li lang="la"><i>Gypsophila</i> <b>159</b></li>
+<li lang="da">Gypsurt <b>159</b></li>
+<li lang="da">Gyvel <b>235</b></li>
+</ul>
+<h3 class="fx-sec" id="fx-s-h">H</h3>
+<ul class="fx-l">
+<li lang="la"><i>Habenaria</i> <b>277</b></li>
+<li lang="la"><i>Halianthus</i> <b>163</b></li>
+<li lang="la"><i>Halimus</i> <b>108</b></li>
+<li lang="da">Halvsvöb <b>117</b></li>
+<li lang="da">Hamp <b>311</b></li>
+<li lang="da">Hanekro <b>201</b></li>
+<li lang="da">Haremad <b>251</b></li>
+<li lang="da">Hareöre <b>114</b></li>
+<li lang="da">Hassel <b>304</b></li>
+<li lang="da">Havre <b>30</b></li>
+<li lang="da">Havtorn <b>174</b></li>
+<li lang="la"><i>Hedera</i> <b>98</b></li>
+<li lang="la"><i>Hedysarum</i> <b>242</b></li>
+<li lang="da">Heire <b>37</b></li>
+<li lang="la"><i>Heleocharis</i> <b>16</b></li>
+<li lang="la"><i>Heleochloa</i> <b>39</b></li>
+<li lang="la"><i>Heleogeton</i> <b>20</b></li>
+<li lang="la"><i>Helianthemum</i> <b>189</b></li>
+<li lang="la"><i>Helichrysum</i> <b>265</b></li>
+<li lang="la"><i>Helleborus</i> <b>198</b></li>
+<li lang="la"><i>Helosciadum</i> <b>114</b></li>
+<li lang="la"><i>Hepatica</i> <b>197</b></li>
+<li lang="la"><i>Heracleum</i> <b>113</b></li>
+<li lang="la"><i>Herminium</i> <b>276</b></li>
+<li lang="la"><i>Herniaria</i> <b>99</b></li>
+<li lang="la"><i>Hesperis</i> <b>224</b></li>
+<li lang="da">Hestegræs <b>29</b></li>
+<li lang="da">Hestehov <b>262</b></li>
+<li lang="la"><i>Hieracium</i> <b>254</b></li>
+<li lang="la"><i>Hierochloa</i> <b>29</b></li>
+<li lang="la"><i>Himantoglossum</i> <b>276</b></li>
+<li lang="la"><i>Hippochæris</i> <b>255</b></li>
+<li lang="la"><i>Hippophae</i> <b>311</b></li>
+<li lang="la"><i>Hippuris</i> <b>1</b></li>
+<li lang="da">Hjertelæbe <b>280</b></li>
+<li lang="da">Hjertespand <b>205</b></li>
+<li lang="da">Hjorterod <b>118</b></li>
+<li lang="da">Hjortetröst <b>261</b></li>
+<li lang="da">Hjælme <b>28</b></li>
+<li lang="da">Hjörneklap <b>224</b></li>
+<li lang="la"><i>Holcus</i> <b>29</b></li>
+<li lang="la"><i>Holosteum</i> <b>52</b></li>
+<li lang="la"><i>Hordeum</i> <b>50</b></li>
+<li lang="da">Hornblad <b>303</b></li>
+<li lang="la"><i>Hottonia</i> <b>81</b></li>
+<li lang="da">Humle <b>311</b></li>
+<li lang="la"><i>Humulus</i> <b>311</b></li>
+<li lang="da">Hundegræs <b>44</b></li>
+<li lang="da">Hundetunge <b>74</b></li>
+<li lang="da">Huullæbe <b>247</b></li>
+<li lang="da">Huulsvöb <b>111</b></li>
+<li lang="da">Hvene <b>25</b></li>
+<li lang="la"><i>Hyacinthus</i> <b>134</b></li>
+<li lang="la"><i>Hydrochæris</i> <b>313</b></li>
+<li lang="la"><i>Hydrocotyle</i> <b>118</b></li>
+<li lang="da">Hyld <b>119</b></li>
+<li lang="la"><i>Hyoscyamus</i> <b>87</b></li>
+<li lang="la"><i>Hypericum</i> <b>248</b></li>
+<li lang="da">Hyrdetaske <b>218</b></li>
+<li lang="da">Hængeblomst <b>257</b></li>
+<li lang="da">Högeskjæg <b>252</b></li>
+<li lang="da">Högeurt <b>254</b></li>
+<li lang="da">Hönsetarm <b>167</b></li>
+<li lang="da">Hör <b>123</b></li>
+<li lang="da">Hörsilke <b>62</b></li>
+</ul>
+<h3 class="fx-sec" id="fx-s-i">I&thinsp;J</h3>
+<ul class="fx-l">
+<li lang="da">Jacobsurt <b>266</b></li>
+<li lang="la"><i>Jacobæa</i> <b>266</b></li>
+<li lang="la"><i>Jasione</i> <b>90</b></li>
+<li lang="da">Jernurt <b>208</b></li>
+<li lang="la"><i>Impatiens</i> <b>97</b></li>
+<li lang="la"><i>Inula</i> <b>268</b></li>
+<li lang="da">Jordbær <b>183</b></li>
+<li lang="da">Jordrög <b>232</b></li>
+<li lang="la"><i>Iris</i> <b>13</b></li>
+<li lang="la"><i>Isolepis</i> <b>20</b></li>
+<li lang="la"><i>Juncus</i> <b>126</b></li>
+<li lang="la"><i>Juniperus</i> <b>311</b></li>
+</ul>
+<h3 class="fx-sec" id="fx-s-k">K</h3>
+<ul class="fx-l">
+<li lang="da">Kaal <b>221</b></li>
+<li lang="da">Kabbeleie <b>198</b></li>
+<li lang="da">Kalaminthe <b>206</b></li>
+<li lang="da">Kalmus <b>124</b></li>
+<li lang="da">Kamgræs <b>45</b></li>
+<li lang="da">Kamille <b>271</b></li>
+<li lang="da">Kamlöv <b>318</b></li>
+<li lang="da">Kantbælle <b>241</b></li>
+<li lang="da">Kantfrö <b>17</b></li>
+<li lang="da">Karline <b>258</b></li>
+<li lang="da">Karse <b>217</b></li>
+<li lang="da">Kartebolle <b>55</b></li>
+<li lang="da">Katost <b>231</b></li>
+<li lang="da">Kattefod <b>265</b></li>
+<li lang="da">Kattehale <b>170</b></li>
+<li lang="da">Katteurt <b>203</b></li>
+<li lang="da">Kiddike <b>221</b></li>
+<li lang="da">Kilebæger <b>47</b></li>
+<li lang="da">Kirsebærtræ <b>173</b></li>
+<li lang="da">Kjællingtand <b>240</b></li>
+<li lang="da">Kjæruld <b>18</b></li>
+<li lang="da">Klaseskjærm <b>117</b></li>
+<li lang="da">Klinte <b>166</b></li>
+<li lang="da">Klokke <b>91</b></li>
+<li lang="da">Klynger <b>179</b></li>
+<li lang="da">Klöftnaal <b>216</b></li>
+<li lang="da">Klöver <b>236</b></li>
+<li lang="da">Klövkrone <b>167</b></li>
+<li lang="da">Knavel <b>157</b></li>
+<li lang="da">Knopurt <b>271</b></li>
+<li lang="da">Knælæbe <b>280</b></li>
+<li lang="da">Kobjælde <b>197</b></li>
+<li lang="la"><i>Kochia</i> <b>100</b></li>
+<li lang="da">Kodriver <b>79</b></li>
+<li lang="la"><i>Koeleria</i> <b>32</b></li>
+<li lang="da">Koföde <b>209</b></li>
+<li lang="da">Kogleax <b>19</b></li>
+<li lang="da">Kokleare <b>219</b></li>
+<li lang="da">Kommen <b>115</b></li>
+<li lang="da">Kongebrægne <b>318</b></li>
+<li lang="da">Kongelys <b>84</b></li>
+<li lang="da">Kongepen <b>255</b></li>
+<li lang="da">Konval <b>132</b></li>
+<li lang="da">Koralrod <b>277</b></li>
+<li lang="da">Korneel <b>62</b></li>
+<li lang="da">Korsknop <b>203</b></li>
+<li lang="da">Kortlæbe <b>207</b></li>
+<li lang="da">Kortnæb <b>111</b></li>
+<li lang="da">Kortskulpe <b>220</b></li>
+<li lang="da">Kragefod <b>183</b></li>
+<li lang="da">Krageklo <b>235</b></li>
+<li lang="da">Krandsbörste <b>206</b></li>
+<li lang="da">Krap <b>61</b></li>
+<li lang="da">Krebsklo <b>313</b></li>
+<li lang="da">Krognaal <b>218</b></li>
+<li lang="da">Krop <b>12</b></li>
+<li lang="da">Kræge <b>172</b></li>
+<li lang="da">Krækling <b>310</b></li>
+<li lang="da">Kulsukker <b>76</b></li>
+<li lang="da">Körvel <b>109</b></li>
+</ul>
+<h3 class="fx-sec" id="fx-s-l">L</h3>
+<ul class="fx-l">
+<li lang="la"><i>Lactuca</i> <b>256</b></li>
+<li lang="la"><i>Lamium</i> <b>203</b></li>
+<li lang="da">Langnæb <b>109</b></li>
+<li lang="la"><i>Lappa</i> <b>259</b></li>
+<li lang="la"><i>Lapsana</i> <b>250</b></li>
+<li lang="la"><i>Larix</i> <b>305</b></li>
+<li lang="la"><i>Laserpitium</i> <b>112</b></li>
+<li lang="la"><i>Lastrea</i> <b>317</b></li>
+<li lang="la"><i>Lathræa</i> <b>214</b></li>
+<li lang="la"><i>Lathyrus</i> <b>245</b></li>
+<li lang="la"><i>Lemna</i> <b>2</b></li>
+<li lang="la"><i>Leontodon</i> <b>256</b></li>
+<li lang="la"><i>Leonurus</i> <b>205</b></li>
+<li lang="la"><i>Lepidium</i> <b>217</b></li>
+<li lang="la"><i>Lepturus</i> <b>51</b></li>
+<li lang="da">Leverurt <b>120</b></li>
+<li lang="la"><i>Levisticum</i> <b>111</b></li>
+<li lang="la"><i>Libanotis</i> <b>118</b></li>
+<li lang="la"><i>Ligusticum</i> <b>114</b></li>
+<li lang="la"><i>Limnochloa</i> <b>18</b></li>
+<li lang="da">Limonurt <b>121</b></li>
+<li lang="la"><i>Limosella</i> <b>213</b></li>
+<li lang="la"><i>Linaria</i> <b>212</b></li>
+<li lang="da">Lind <b>189</b></li>
+<li lang="la"><i>Linum</i> <b>123</b></li>
+<li lang="la"><i>Listera</i> <b>278</b></li>
+<li lang="la"><i>Lithospermum</i> <b>72</b></li>
+<li lang="la"><i>Littorella</i> <b>302</b></li>
+<li lang="la"><i>Lobelia</i> <b>90</b></li>
+<li lang="la"><i>Lolium</i> <b>49</b></li>
+<li lang="la"><i>Lomaria</i> <b>318</b></li>
+<li lang="la"><i>Lonicera</i> <b>93</b></li>
+<li lang="da">Loppeurt <b>267</b></li>
+<li lang="da">Lostilk <b>114</b></li>
+<li lang="la"><i>Lotophyllum</i> <b>238</b></li>
+<li lang="la"><i>Lotus</i> <b>240</b></li>
+<li lang="la"><i>Lunaria</i> <b>218</b></li>
+<li lang="da">Lungeurt <b>73</b></li>
+<li lang="la"><i>Luzula</i> <b>175</b></li>
+<li lang="la"><i>Lychnis</i> <b>166</b></li>
+<li lang="la"><i>Lycopodium</i> <b>319</b></li>
+<li lang="la"><i>Lycopsis</i> <b>75</b></li>
+<li lang="la"><i>Lycopus</i> <b>4</b></li>
+<li lang="da">Lyng <b>146</b></li>
+<li lang="la"><i>Lysimachia</i> <b>81</b></li>
+<li lang="la"><i>Lythrum</i> <b>170</b></li>
+<li lang="da">Læbelös <b>207</b></li>
+<li lang="da">Lærkespore <b>233</b></li>
+<li lang="da">Lærketræ <b>305</b></li>
+<li lang="da">Lög <b>136</b></li>
+<li lang="da">Lövefod <b>52</b></li>
+<li lang="da">Lövemule <b>212</b></li>
+<li lang="da">Lövetand <b>256</b></li>
+</ul>
+<h3 class="fx-sec" id="fx-s-m">M</h3>
+<ul class="fx-l">
+<li lang="da">Maanerude <b>319</b></li>
+<li lang="la"><i>Majanthemum</i> <b>52</b></li>
+<li lang="da">Maiblomst <b>52</b></li>
+<li lang="la"><i>Malachium</i> <b>167</b></li>
+<li lang="la"><i>Malaxis</i> <b>280</b></li>
+<li lang="la"><i>Malus</i> <b>175</b></li>
+<li lang="la"><i>Malva</i> <b>231</b></li>
+<li lang="da">Mandstro <b>119</b></li>
+<li lang="da">Mangelöv <b>317</b></li>
+<li lang="da">Marehalm <b>50</b></li>
+<li lang="da">Marietidsel <b>259</b></li>
+<li lang="la"><i>Marrubium</i> <b>205</b></li>
+<li lang="la"><i>Matricaria</i> <b>270</b></li>
+<li lang="la"><i>Medicago</i> <b>241</b></li>
+<li lang="da">Meelbær <b>155</b></li>
+<li lang="la"><i>Melampyrum</i> <b>208</b></li>
+<li lang="la"><i>Melica</i> <b>33</b></li>
+<li lang="la"><i>Melilotus</i> <b>239</b></li>
+<li lang="la"><i>Mentha</i> <b>199</b></li>
+<li lang="la"><i>Menyanthes</i> <b>88</b></li>
+<li lang="la"><i>Mercurialis</i> <b>313</b></li>
+<li lang="da">Merian <b>201</b></li>
+<li lang="da">Miliegræs <b>28</b></li>
+<li lang="la"><i>Milium</i> <b>28</b></li>
+<li lang="da">Miltbrægne <b>316</b></li>
+<li lang="da">Milturt <b>157</b></li>
+<li lang="da">Mjödurt <b>174</b></li>
+<li lang="la"><i>Molinia</i> <b>40</b></li>
+<li lang="la"><i>Monotropa</i> <b>155</b></li>
+<li lang="la"><i>Montia</i> <b>51</b></li>
+<li lang="da">Mosetot <b>18</b></li>
+<li lang="da">Munke <b>90</b></li>
+<li lang="da">Munkekrone <b>270</b></li>
+<li lang="la"><i>Muscari</i> <b>134</b></li>
+<li lang="da">Musehale <b>124</b></li>
+<li lang="da">Museurt <b>264</b></li>
+<li lang="la"><i>Mycelis</i> <b>257</b></li>
+<li lang="da">Mynte <b>199</b></li>
+<li lang="la"><i>Myosotis</i> <b>76</b></li>
+<li lang="la"><i>Myosurus</i> <b>124</b></li>
+<li lang="la"><i>Myrica</i> <b>311</b></li>
+<li lang="la"><i>Myriophyllum</i> <b>303</b></li>
+<li lang="la"><i>Myrrhis</i> <b>111</b></li>
+<li lang="la"><i>Myrtillus</i> <b>147</b></li>
+<li lang="da">Mysike <b>58</b></li>
+<li lang="da">Mysse <b>281</b></li>
+<li lang="da">Mælde <b>105</b></li>
+<li lang="da">Mælkurt <b>231</b></li>
+<li lang="da">Mærke <b>116</b></li>
+</ul>
+<h3 class="fx-sec" id="fx-s-n">N</h3>
+<ul class="fx-l">
+<li lang="da">Naalebæger <b>99</b></li>
+<li lang="la"><i>Narcissus</i> <b>133</b></li>
+<li lang="la"><i>Nardus</i> <b>51</b></li>
+<li lang="la"><i>Nasturtium</i> <b>224</b></li>
+<li lang="da">Natlys <b>150</b></li>
+<li lang="da">Natskygge <b>87</b></li>
+<li lang="la"><i>Naumburgia</i> <b>83</b></li>
+<li lang="da">Nellike <b>158</b></li>
+<li lang="da">Nellikerod <b>186</b></li>
+<li lang="la"><i>Neottia</i> <b>278</b></li>
+<li lang="la"><i>Nepeta</i> <b>203</b></li>
+<li lang="la"><i>Neslia</i> <b>221</b></li>
+<li lang="da">Norel <b>163</b></li>
+<li lang="la"><i>Nuphar</i> <b>189</b></li>
+<li lang="la"><i>Nymphæa</i> <b>189</b></li>
+<li lang="da">Nyserod <b>198</b></li>
+<li lang="da">Næbfrö <b>15</b></li>
+<li lang="da">Nælde <b>302</b></li>
+<li lang="da">Nöglekurv <b>265</b></li>
+<li lang="da">Nökkerose <b>189</b></li>
+</ul>
+<h3 class="fx-sec" id="fx-s-o">O</h3>
+<ul class="fx-l">
+<li lang="la"><i>Odontites</i> <b>211</b></li>
+<li lang="la"><i>Oenanthe</i> <b>117</b></li>
+<li lang="la"><i>Oenothera</i> <b>150</b></li>
+<li lang="la"><i>Onobrychis</i> <b>242</b></li>
+<li lang="la"><i>Ononis</i> <b>235</b></li>
+<li lang="la"><i>Onopordon</i> <b>259</b></li>
+<li lang="la"><i>Ophioglossum</i> <b>319</b></li>
+<li lang="la"><i>Ophrys</i> <b>276</b></li>
+<li lang="la"><i>Orchis</i> <b>273</b></li>
+<li lang="la"><i>Origanum</i> <b>201</b></li>
+<li lang="la"><i>Ornithogalum</i> <b>136</b></li>
+<li lang="la"><i>Ornithopus</i> <b>242</b></li>
+<li lang="la"><i>Orobanche</i> <b>214</b></li>
+<li lang="la"><i>Orobus</i> <b>216</b></li>
+<li lang="la"><i>Osmunda</i> <b>318</b></li>
+<li lang="la"><i>Oxalis</i> <b>230</b></li>
+<li lang="da">Oxetunge <b>75</b></li>
+<li lang="da">Oxeöie <b>269</b></li>
+<li lang="la"><i>Oxycoccos</i> <b>147</b></li>
+</ul>
+<h3 class="fx-sec" id="fx-s-p">P</h3>
+<ul class="fx-l">
+<li lang="da">Padderokke <b>320</b></li>
+<li lang="la"><i>Panicum</i> <b>21</b></li>
+<li lang="la"><i>Papaver</i> <b>188</b></li>
+<li lang="la"><i>Paris</i> <b>153</b></li>
+<li lang="la"><i>Parietaria</i> <b>53</b></li>
+<li lang="la"><i>Parnassia</i> <b>120</b></li>
+<li lang="la"><i>Pastinaca</i> <b>113</b></li>
+<li lang="da">Peberrod <b>220</b></li>
+<li lang="da">Pengeurt <b>216</b></li>
+<li lang="la"><i>Peplis</i> <b>138</b></li>
+<li lang="da">Perikon <b>248</b></li>
+<li lang="la"><i>Petasites</i> <b>262</b></li>
+<li lang="la"><i>Peucedanum</i> <b>112</b></li>
+<li lang="la"><i>Phalaris</i> <b>25</b></li>
+<li lang="la"><i>Phellandrium</i> <b>118</b></li>
+<li lang="la"><i>Phleum</i> <b>24</b></li>
+<li lang="la"><i>Phragimtes</i> <b>29</b></li>
+<li lang="la"><i>Phyteuma</i> <b>93</b></li>
+<li lang="la"><i>Picris</i> <b>252</b></li>
+<li lang="da">Pigfrö <b>74</b></li>
+<li lang="da">Pigæble <b>86</b></li>
+<li lang="da">Piil <b>306</b></li>
+<li lang="da">Piilblad <b>302</b></li>
+<li lang="da">Pileurt <b>138</b></li>
+<li lang="la"><i>Pimpinella</i> <b>115</b></li>
+<li lang="da">Pindsvinknop <b>283</b></li>
+<li lang="la"><i>Pingvicula</i> <b>4</b></li>
+<li lang="la"><i>Pinus</i> <b>305</b></li>
+<li lang="la"><i>Pisum</i> <b>247</b></li>
+<li lang="la"><i>Plantago</i> <b>53</b></li>
+<li lang="la"><i>Platanthera</i> <b>272</b></li>
+<li lang="la"><i>Poa</i> <b>34</b></li>
+<li lang="la"><i>Polygala</i> <b>234</b></li>
+<li lang="la"><i>Polygonatum</i> <b>132</b></li>
+<li lang="la"><i>Polygonum</i> <b>138</b></li>
+<li lang="da">Poppel <b>312</b></li>
+<li lang="la"><i>Populus</i> <b>312</b></li>
+<li lang="da">Pors <b>311</b></li>
+<li lang="da">Poselæbe <b>276</b></li>
+<li lang="la"><i>Potamogeton</i> <b>65</b></li>
+<li lang="la"><i>Potentilla</i> <b>183</b></li>
+<li lang="da">Pragtstjerne <b>166</b></li>
+<li lang="la"><i>Prenanthes</i> <b>257</b></li>
+<li lang="la"><i>Primula</i> <b>79</b></li>
+<li lang="la"><i>Prunella</i> <b>207</b></li>
+<li lang="la"><i>Prunus</i> <b>172</b></li>
+<li lang="la"><i>Pteris</i> <b>318</b></li>
+<li lang="la"><i>Psyllophora</i> <b>285</b></li>
+<li lang="da">Pukkellæbe <b>276</b></li>
+<li lang="la"><i>Pulicaria</i> <b>267</b></li>
+<li lang="la"><i>Pulmonaria</i> <b>73</b></li>
+<li lang="la"><i>Pulsatilla</i> <b>197</b></li>
+<li lang="la"><i>Pyrethrum</i> <b>270</b></li>
+<li lang="la"><i>Pyrola</i> <b>155</b></li>
+<li lang="la"><i>Pyrus</i> <b>175</b></li>
+<li lang="da">Pæretræ <b>175</b></li>
+</ul>
+<h3 class="fx-sec" id="fx-s-q">Q</h3>
+<ul class="fx-l">
+<li lang="da">Qvalkved <b>119</b></li>
+<li lang="la"><i>Qvercus</i> <b>304</b></li>
+<li lang="da">Qvikgræs <b>47</b></li>
+</ul>
+<h3 class="fx-sec" id="fx-s-r">R</h3>
+<ul class="fx-l">
+<li lang="da">Radax <b>15</b></li>
+<li lang="la"><i>Radiola</i> <b>71</b></li>
+<li lang="da">Raigræs <b>49</b></li>
+<li lang="la"><i>Ranunculus</i> <b>191</b></li>
+<li lang="da">Rapgræs <b>33</b></li>
+<li lang="la"><i>Raphanistrum</i> <b>221</b></li>
+<li lang="la"><i>Raphanus</i> <b>221</b></li>
+<li lang="la"><i>Rapistrum</i> <b>221</b></li>
+<li lang="da">Rapunzel <b>93</b></li>
+<li lang="da">Ravnefod <b>217</b></li>
+<li lang="da">Regnfand <b>263</b></li>
+<li lang="da">Remlæbe <b>277</b></li>
+<li lang="la"><i>Reseda</i> <b>171</b></li>
+<li lang="la"><i>Rhamnus</i> <b>94</b></li>
+<li lang="la"><i>Rhynchospora</i> <b>15</b></li>
+<li lang="la"><i>Ribes</i> <b>97</b></li>
+<li lang="da">Ribs <b>97</b></li>
+<li lang="da">Ridderspore <b>190</b></li>
+<li lang="da">River <b>74</b></li>
+<li lang="la"><i>Rosa</i> <b>176</b></li>
+<li lang="la"><i>Rottboellia</i> <b>51</b></li>
+<li lang="da">Rottehale <b>21</b></li>
+<li lang="la"><i>Rubia</i> <b>61</b></li>
+<li lang="la"><i>Rubus</i> <b>179</b></li>
+<li lang="da">Rundbælle <b>236</b></li>
+<li lang="da">Rundskulpe <b>221</b></li>
+<li lang="la"><i>Ruppia</i> <b>64</b></li>
+<li lang="da">Rævehale <b>23</b></li>
+<li lang="da">Röllike <b>270</b></li>
+<li lang="da">Rön <b>175</b></li>
+<li lang="da">Rörgræs <b>25</b></li>
+<li lang="da">Rörhvene <b>26</b></li>
+</ul>
+<h3 class="fx-sec" id="fx-s-s">S</h3>
+<ul class="fx-l">
+<li lang="la"><i>Sagina</i> <b>170</b></li>
+<li lang="la"><i>Sagittaria</i> <b>302</b></li>
+<li lang="la"><i>Salicornia</i> <b>1</b></li>
+<li lang="la"><i>Salix</i> <b>306</b></li>
+<li lang="la"><i>Salsola</i> <b>100</b></li>
+<li lang="da">Salturt <b>1</b></li>
+<li lang="la"><i>Sambucus</i> <b>119</b></li>
+<li lang="da">Samel <b>83</b></li>
+<li lang="la"><i>Samolus</i> <b>83</b></li>
+<li lang="da">Sandkryb <b>83</b></li>
+<li lang="da">Sandvaaner <b>163</b></li>
+<li lang="la"><i>Sanicula</i> <b>118</b></li>
+<li lang="da">Sannikel <b>118</b></li>
+<li lang="la"><i>Saponaria</i> <b>160</b></li>
+<li lang="la"><i>Sarothamnus</i> <b>235</b></li>
+<li lang="la"><i>Saxifraga</i> <b>157</b></li>
+<li lang="la"><i>Scabiosa</i> <b>56</b></li>
+<li lang="la"><i>Scandix</i> <b>109</b></li>
+<li lang="la"><i>Schedonorus</i> <b>42</b></li>
+<li lang="la"><i>Schelhammera</i> <b>286</b></li>
+<li lang="la"><i>Scheuchzeria</i> <b>144</b></li>
+<li lang="la"><i>Schoberia</i> <b>100</b></li>
+<li lang="la"><i>Schoenus</i> <b>13</b></li>
+<li lang="la"><i>Scirpus</i> <b>20</b></li>
+<li lang="la"><i>Scleranthus</i> <b>157</b></li>
+<li lang="la"><i>Scorzonera</i> <b>258</b></li>
+<li lang="la"><i>Scrophularia</i> <b>213</b></li>
+<li lang="la"><i>Scutellaria</i> <b>208</b></li>
+<li lang="la"><i>Sedum</i> <b>164</b></li>
+<li lang="da">Seglrod <b>132</b></li>
+<li lang="la"><i>Selinum</i> <b>114</b></li>
+<li lang="da">Sellerie <b>115</b></li>
+<li lang="la"><i>Sempervivum</i> <b>172</b></li>
+<li lang="la"><i>Senebiera</i> <b>217</b></li>
+<li lang="la"><i>Senecio</i> <b>269</b></li>
+<li lang="da">Sennep <b>226</b></li>
+<li lang="la"><i>Serratula</i> <b>258</b></li>
+<li lang="la"><i>Setaria</i> <b>21</b></li>
+<li lang="la"><i>Sherardia</i> <b>57</b></li>
+<li lang="la"><i>Silene</i> <b>166</b></li>
+<li lang="la"><i>Silybum</i> <b>259</b></li>
+<li lang="da">Simmer <b>197</b></li>
+<li lang="la"><i>Sinapis</i> <b>226</b></li>
+<li lang="la"><i>Sison</i> <b>114</b></li>
+<li lang="la"><i>Sisymbrium</i> <b>225</b></li>
+<li lang="la"><i>Sium</i> <b>116</b></li>
+<li lang="da">Siv <b>126</b></li>
+<li lang="da">Skarntyde <b>112</b></li>
+<li lang="da">Skedeknæ <b>151</b></li>
+<li lang="da">Skjaller <b>209</b></li>
+<li lang="da">Skjolddrager <b>208</b></li>
+<li lang="da">Skjælrod <b>214</b></li>
+<li lang="da">Skjæne <b>14</b></li>
+<li lang="da">Skjær <b>258</b></li>
+<li lang="da">Skjærmax <b>21</b></li>
+<li lang="da">Skjærmlille <b>114</b></li>
+<li lang="da">Skovstjerne <b>146</b></li>
+<li lang="da">Skrueax <b>277</b></li>
+<li lang="da">Skræppe <b>110</b></li>
+<li lang="da">Slangehoved <b>71</b></li>
+<li lang="da">Sneglebælle <b>241</b></li>
+<li lang="da">Sneklokke <b>133</b></li>
+<li lang="da">Snerle <b>83</b></li>
+<li lang="da">Snerre <b>58</b></li>
+<li lang="da">Snylterod <b>155</b></li>
+<li lang="da">Sodaurt <b>100</b></li>
+<li lang="la"><i>Solanum</i> <b>87</b></li>
+<li lang="da">Soldug <b>123</b></li>
+<li lang="la"><i>Solidago</i> <b>268</b></li>
+<li lang="da">Solöie <b>189</b></li>
+<li lang="la"><i>Sonchus</i> <b>257</b></li>
+<li lang="la"><i>Sorbus</i> <b>175</b></li>
+<li lang="la"><i>Sparganium</i> <b>283</b></li>
+<li lang="la"><i>Spartium</i> <b>235</b></li>
+<li lang="la"><i>Spergella</i> <b>169</b></li>
+<li lang="la"><i>Spergula</i> <b>169</b></li>
+<li lang="da">Spidsgab <b>52</b></li>
+<li lang="da">Spidshale <b>51</b></li>
+<li lang="la"><i>Spiræa</i> <b>174</b></li>
+<li lang="la"><i>Spiranthes</i> <b>277</b></li>
+<li lang="da">Springklap <b>222</b></li>
+<li lang="da">Springknap <b>53</b></li>
+<li lang="la"><i>Stachys</i> <b>202</b></li>
+<li lang="da">Star <b>284</b></li>
+<li lang="la"><i>Statice</i> <b>121</b></li>
+<li lang="da">Steenbræk <b>157</b></li>
+<li lang="da">Steenfrö <b>72</b></li>
+<li lang="da">Steenklöver <b>239</b></li>
+<li lang="da">Steenurt <b>264</b></li>
+<li lang="da">Steffensurt <b>3</b></li>
+<li lang="la"><i>Stellaria</i> <b>161</b></li>
+<li lang="da">Stilkax <b>46</b></li>
+<li lang="da">Stolthendrik <b>104</b></li>
+<li lang="da">Storkenæb <b>227</b></li>
+<li lang="da">Stormhat <b>190</b></li>
+<li lang="da">Strandarve <b>163</b></li>
+<li lang="da">Strandbo <b>302</b></li>
+<li lang="da">Strandvaaner <b>215</b></li>
+<li lang="la"><i>Stratiotes</i> <b>313</b></li>
+<li lang="la"><i>Succisa</i> <b>57</b></li>
+<li lang="da">Sumprod <b>279</b></li>
+<li lang="da">Sumpstraa <b>16</b></li>
+<li lang="da">Svalerod <b>108</b></li>
+<li lang="da">Svaleurt <b>187</b></li>
+<li lang="da">Svinemælk <b>257</b></li>
+<li lang="da">Svingel <b>41</b></li>
+<li lang="da">Svovlrod <b>112</b></li>
+<li lang="da">Sylskulpe <b>225</b></li>
+<li lang="la"><i>Symphytum</i> <b>76</b></li>
+<li lang="da">Sæbeurt <b>160</b></li>
+<li lang="da">Sækbæger <b>218</b></li>
+</ul>
+<h3 class="fx-sec" id="fx-s-t">T</h3>
+<ul class="fx-l">
+<li lang="da">Taarnurt <b>222</b></li>
+<li lang="da">Tagrör <b>29</b></li>
+<li lang="da">Takkeklap <b>216</b></li>
+<li lang="la"><i>Tanacetum</i> <b>263</b></li>
+<li lang="da">Tandbæger <b>205</b></li>
+<li lang="da">Tandbælg <b>32</b></li>
+<li lang="da">Tandrod <b>223</b></li>
+<li lang="la"><i>Taraxacum</i> <b>256</b></li>
+<li lang="la"><i>Teesdalia</i> <b>216</b></li>
+<li lang="la"><i>Teucrium</i> <b>207</b></li>
+<li lang="la"><i>Thalictrum</i> <b>195</b></li>
+<li lang="la"><i>Thesium</i> <b>99</b></li>
+<li lang="la"><i>Thlaspi</i> <b>216</b></li>
+<li lang="la"><i>Thymus</i> <b>205</b></li>
+<li lang="la"><i>Thyrsanthus</i> <b>83</b></li>
+<li lang="da">Tidse <b>311</b></li>
+<li lang="da">Tidsel <b>261</b></li>
+<li lang="da">Tidselkugle <b>272</b></li>
+<li lang="la"><i>Tilia</i> <b>189</b></li>
+<li lang="da">Timian <b>205</b></li>
+<li lang="la"><i>Tiniaria</i> <b>151</b></li>
+<li lang="la"><i>Torilis</i> <b>109</b></li>
+<li lang="la"><i>Tormentilla</i> <b>184</b></li>
+<li lang="da">Tornblad <b>234</b></li>
+<li lang="da">Torskemund <b>212</b></li>
+<li lang="da">Traadspore <b>275</b></li>
+<li lang="la"><i>Tragopogon</i> <b>258</b></li>
+<li lang="da">Tranebær <b>147</b></li>
+<li lang="da">Tranehals <b>227</b></li>
+<li lang="da">Trehage <b>144</b></li>
+<li lang="la"><i>Trichophorum</i> <b>18</b></li>
+<li lang="la"><i>Trientalis</i> <b>146</b></li>
+<li lang="la"><i>Trifolium</i> <b>236</b></li>
+<li lang="la"><i>Triglochin</i> <b>144</b></li>
+<li lang="la"><i>Triodia</i> <b>32</b></li>
+<li lang="la"><i>Triticum</i> <b>47</b></li>
+<li lang="da">Troldurt <b>211</b></li>
+<li lang="la"><i>Trollius</i> <b>198</b></li>
+<li lang="la"><i>Tulipa</i> <b>134</b></li>
+<li lang="la"><i>Turritis</i> <b>222</b></li>
+<li lang="da">Tusindblad <b>303</b></li>
+<li lang="da">Tusindfryd <b>269</b></li>
+<li lang="da">Tusindfrö <b>71</b></li>
+<li lang="da">Tusindgylden <b>89</b></li>
+<li lang="la"><i>Tussilago</i> <b>263</b></li>
+<li lang="da">Tveblad <b>171</b></li>
+<li lang="da">Tvetand <b>203</b></li>
+<li lang="la"><i>Typha</i> <b>284</b></li>
+<li lang="da">Tyltebær <b>147</b></li>
+</ul>
+<h3 class="fx-sec" id="fx-s-u">U</h3>
+<ul class="fx-l">
+<li lang="la"><i>Ulex</i> <b>234</b></li>
+<li lang="la"><i>Ulmus</i> <b>100</b></li>
+<li lang="la"><i>Urtica</i> <b>302</b></li>
+<li lang="la"><i>Utricularia</i> <b>4</b></li>
+</ul>
+<h3 class="fx-sec" id="fx-s-v">V</h3>
+<ul class="fx-l">
+<li lang="la"><i>Vaccinium</i> <b>147</b></li>
+<li lang="la"><i>Valeriana</i> <b>11</b></li>
+<li lang="da">Valmue <b>168</b></li>
+<li lang="da">Vandax <b>64</b></li>
+<li lang="da">Vandkryber <b>138</b></li>
+<li lang="da">Vandnavle <b>118</b></li>
+<li lang="da">Vandstjerne <b>282</b></li>
+<li lang="da">Vau <b>171</b></li>
+<li lang="da">Vedbende <b>98</b></li>
+<li lang="da">Veibred <b>53</b></li>
+<li lang="la"><i>Verbascum</i> <b>84</b></li>
+<li lang="la"><i>Verbena</i> <b>208</b></li>
+<li lang="la"><i>Veronica</i> <b>5</b></li>
+<li lang="da">Vibefedt <b>4</b></li>
+<li lang="la"><i>Viburnum</i> <b>119</b></li>
+<li lang="la"><i>Vicia</i> <b>242</b></li>
+<li lang="da">Vikke <b>242</b></li>
+<li lang="da">Vindax <b>26</b></li>
+<li lang="da">Vinterblomme <b>198</b></li>
+<li lang="da">Vintergrön <b>155</b></li>
+<li lang="da">Vinterkarse <b>223</b></li>
+<li lang="la"><i>Viscaria</i> <b>166</b></li>
+<li lang="la"><i>Viscum</i> <b>310</b></li>
+<li lang="da">Volverlei <b>267</b></li>
+<li lang="da">Vortemælk <b>283</b></li>
+<li lang="da">Vorterod <b>191</b></li>
+<li lang="da">Vrietorn <b>94</b></li>
+<li lang="la"><i>Vulpia</i> <b>45</b></li>
+<li lang="da">Væselhale <b>45</b></li>
+</ul>
+<h3 class="fx-sec" id="fx-s-x">X</h3>
+<ul class="fx-l">
+<li lang="la"><i>Xanthium</i> <b>305</b></li>
+</ul>
+<h3 class="fx-sec" id="fx-s-z">Z</h3>
+<ul class="fx-l">
+<li lang="la"><i>Zannichellia</i> <b>282</b></li>
+<li lang="la"><i>Zostera</i> <b>281</b></li>
+</ul>
+<h3 class="fx-sec" id="fx-s-æ">Æ</h3>
+<ul class="fx-l">
+<li lang="da">Æl <b>301</b></li>
+<li lang="da">Ælm <b>100</b></li>
+<li lang="da">Ærenpriis <b>5</b></li>
+<li lang="da">Ært <b>247</b></li>
+<li lang="da">Æselsfoder <b>259</b></li>
+</ul>
+<h3 class="fx-sec" id="fx-s-ö">Ö</h3>
+<ul class="fx-l">
+<li lang="da">Öientröst <b>210</b></li>
+<li lang="da">Örneöie <b>253</b></li>
+</ul>
+<!-- END GENERATED INDEX -->
+</div>
+
+<p class="fx-note">
+  Latin is set in italic, Danish in roman &mdash; a reading of the names, since the
+  index marks no language itself. Choose any name to open the page it was printed
+  on: the index gives no translations, but a plant's Latin and Danish names were
+  set on the same page, so part of the pairing is recoverable from it.
+  129 of 233 pages carry equal numbers of each, and 60 carry exactly one
+  of each &mdash; though a page can also hold two unrelated survivors, so the
+  reading is a proposal, not a proof.
+</p>
+<p class="fx-note">
+  The letter rail is the index&rsquo;s own alphabet, not ours: twenty-five sections,
+  no W and no Y, I and J interfiled, and &AElig; and &Ouml; at the end &mdash; where only
+  Danish names arrive, because in a Latin name &AElig; was sorted as <i>ae</i>.
+  The <a href="https://github.com/bergholt/excursoria">Prolog version</a> states
+  those rules as rules and tests them against the printed order.
+</p>
+
+
+<script>
+(function(){
+  var root = document.currentScript ? document.currentScript.parentNode : null;
+  if (!root || !root.classList.contains('fx')) root = document.querySelector('.fx');
+  if (!root) return;
+
+  function each(nodes, fn){ Array.prototype.forEach.call(nodes, fn); }
+  function esc(s){ return s.replace(/[&<>"]/g, function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function sectionLabel(sec){
+    return sec === 'i' ? 'I&thinsp;J' : sec.toUpperCase();
+  }
+
+  // The entries are served as markup rather than a data payload. The script
+  // reads language from the typography and section from the generated heading.
+  var ENTRIES = [], SECTIONS = [], sec = null;
+  each(root.querySelectorAll('#fx-body .fx-sec, #fx-body li'), function(el){
+    if (el.classList.contains('fx-sec')) {
+      sec = el.id.slice(5);
+      if (SECTIONS.indexOf(sec) === -1) SECTIONS.push(sec);
+      return;
+    }
+    var m = /^([\s\S]*?)\s+(\d+)$/.exec(el.textContent.trim());
+    if (!m || !sec) return;
+    ENTRIES.push({
+      n: m[1], p: +m[2], l: el.querySelector('i') ? 'la' : 'da', s: sec
+    });
+  });
+
+  // Fold 1838 orthography, so Bjorneklo / Björneklo / Bjørneklo all match.
+  function fold(s){
+    var normalized = s.toLowerCase().replace(/æ/g,'ae').replace(/[øö]/g,'o')
+                      .replace(/å/g,'aa');
+    if (normalized.normalize) normalized = normalized.normalize('NFD');
+    return normalized.replace(/[\u0300-\u036f]/g,'');
+  }
+  ENTRIES.forEach(function(e){ e.f = fold(e.n); });
+
+  var PAGES = {}, PAGE_LIST = [];
+  ENTRIES.forEach(function(e){
+    if (!PAGES[e.p]) { PAGES[e.p] = {la:[], da:[]}; PAGE_LIST.push(e.p); }
+    PAGES[e.p][e.l].push(e.n);
+  });
+  PAGE_LIST.sort(function(a,b){ return a-b; });
+
+  var q           = root.querySelector('#fx-q'),
+      body        = root.querySelector('#fx-body'),
+      count       = root.querySelector('#fx-count'),
+      rail        = root.querySelector('.fx-rail'),
+      langControl = root.querySelector('[data-control="lang"]'),
+      viewControl = root.querySelector('[data-control="view"]');
+  var state = {q:'', lang:'all', view:'az', page:null};
+  var previous = null;
+
+  rail.innerHTML = SECTIONS.map(function(letter){
+    return '<button type="button" data-letter="' + esc(letter) + '">' +
+           sectionLabel(letter) + '</button>';
+  }).join('');
+
+  // fold() can change a string's length, so walk the raw name to place the hit.
+  // NB: no line below may put a bare less-than before a logical and. WordPress
+  // reads the angle bracket as the start of a tag and encodes the ampersands
+  // that follow, which is a syntax error that kills this whole script.
+  function mark(name, needle){
+    if (!needle) return esc(name);
+    var i = fold(name).indexOf(needle);
+    if (i < 0) return esc(name);
+    var a = 0, n = 0;
+    while (n < i) {
+      if (a >= name.length) break;
+      n += fold(name[a]).length; a++;
+    }
+    var b = 0, m = 0;
+    while (m < needle.length) {
+      if (a + b >= name.length) break;
+      m += fold(name[a+b]).length; b++;
+    }
+    return esc(name.slice(0,a)) + '<em class="hit">' + esc(name.slice(a,a+b)) +
+           '</em>' + esc(name.slice(a+b));
+  }
+
+  function sectionFor(character){
+    var c = character.toLowerCase();
+    if (c === 'j') return 'i';
+    if (c === 'å') return 'a';
+    if (c === 'ø') return 'ö';
+    return c;
+  }
+
+  function matches(){
+    var t = state.q.trim(), needle = fold(t),
+        num = /^\d+$/.test(t) ? +t : null,
+        oneLetter = t.length === 1 ? sectionFor(t) : null;
+    return ENTRIES.filter(function(e){
+      if (state.page !== null && e.p !== state.page) return false;
+      if (state.lang !== 'all' && e.l !== state.lang) return false;
+      if (!t) return true;
+      // A single character means a historical index section. Longer strings
+      // search folded spellings anywhere in the name.
+      var hit = oneLetter !== null ? e.s === oneLetter
+                                   : e.f.indexOf(needle) > -1;
+      return hit || e.p === num;
+    });
+  }
+
+  function renderAZ(list, needle){
+    var out = '', current = null, open = false;
+    list.forEach(function(e){
+      if (e.s !== current){
+        if (open) out += '</ul>';
+        current = e.s; open = true;
+        out += '<h3 class="fx-sec" id="fx-s-' + esc(current) + '">' +
+               sectionLabel(current) + '</h3><ul class="fx-results">';
+      }
+      out += '<li><button type="button" class="fx-e ' + e.l + '" data-page="' + e.p + '">' +
+             '<span class="n" lang="' + e.l + '">' + mark(e.n, needle) + '</span>' +
+             '<span class="d" aria-hidden="true"></span>' +
+             '<span class="p">' + e.p + '</span></button></li>';
+    });
+    return open ? out + '</ul>' : out;
+  }
+
+  function renderPages(list, needle){
+    var keep = {};
+    list.forEach(function(e){ keep[e.p] = 1; });
+    return PAGE_LIST.filter(function(p){ return keep[p]; }).map(function(p){
+      var g = PAGES[p], cols = '';
+      function col(names, cls, label, lang){
+        var contents = names.length
+          ? names.map(function(n){ return mark(n, needle); }).join(' &middot; ')
+          : '<span class="none">&mdash;</span>';
+        return '<span class="' + cls + '" lang="' + lang + '">' +
+               '<span class="fx-sr" lang="en">' + label + ': </span>' +
+               contents + '</span>';
+      }
+      if (state.lang !== 'da') cols += col(g.la, 'lat', 'Latin', 'la');
+      if (state.lang !== 'la') cols += col(g.da, 'dan', 'Danish', 'da');
+      return '<div class="fx-pg" role="group" aria-label="Page ' + p + '">' +
+             '<span class="no">' + p + '</span><span class="cols">' +
+             cols + '</span></div>';
+    }).join('');
+  }
+
+  function render(){
+    var needle = fold(state.q.trim()), list = matches();
+    body.innerHTML = !list.length
+      ? '<p class="fx-empty">Nothing in the index matches that. Try a shorter stem, ' +
+        'or a page number between 1 and 320.</p>'
+      : (state.view === 'az' ? renderAZ(list, needle) : renderPages(list, needle));
+
+    var pages = {};
+    list.forEach(function(e){ pages[e.p] = 1; });
+    var pageCount = Object.keys(pages).length;
+    count.textContent = state.page !== null
+      ? 'Page ' + state.page + ' \u2014 ' + list.length +
+        (list.length === 1 ? ' name. ' : ' names. ') + 'Escape returns to the index.'
+      : list.length + ' of ' + ENTRIES.length + ' names, on ' + pageCount +
+        (pageCount === 1 ? ' page.' : ' pages.');
+
+    each(rail.querySelectorAll('button'), function(b){
+      b.disabled = state.view !== 'az' || !list.some(function(e){
+        return e.s === b.dataset.letter;
+      });
+    });
+  }
+
+  function press(group, match){
+    each(group.querySelectorAll('button'), function(option){
+      option.setAttribute('aria-pressed', String(match(option)));
+    });
+  }
+
+  function syncControls(){
+    press(langControl, function(option){ return option.dataset.lang === state.lang; });
+    press(viewControl, function(option){ return option.dataset.view === state.view; });
+  }
+
+  function leavePage(){
+    if (state.page === null) return;
+    state.page = null;
+    if (previous) {
+      state.q = previous.q; state.lang = previous.lang; state.view = previous.view;
+    }
+    previous = null;
+    q.value = state.q;
+    syncControls(); render(); q.focus();
+  }
+
+  q.addEventListener('input', function(){
+    state.q = q.value; state.page = null; previous = null; render();
+  });
+  q.addEventListener('keydown', function(e){
+    if (e.key !== 'Escape') return;
+    e.preventDefault(); e.stopPropagation();
+    if (state.page !== null) leavePage();
+    else {
+      q.value = ''; state.q = ''; previous = null; render();
+    }
+  });
+
+  each(root.querySelectorAll('.fx-seg button'), function(b){
+    b.addEventListener('click', function(){
+      if (b.dataset.lang) state.lang = b.dataset.lang;
+      else state.view = b.dataset.view;
+      press(b.parentNode, function(option){ return option === b; });
+      render();
+    });
+  });
+
+  each(rail.querySelectorAll('button'), function(b){
+    b.addEventListener('click', function(){
+      var heading = body.querySelector('#fx-s-' + b.dataset.letter);
+      if (!heading) return;
+      body.scrollTop += heading.getBoundingClientRect().top - body.getBoundingClientRect().top;
+    });
+  });
+
+  body.addEventListener('click', function(e){
+    var entry = e.target.closest('.fx-e');
+    if (!entry) return;
+    previous = {q:state.q, lang:state.lang, view:state.view};
+    state.page = +entry.dataset.page; state.q = ''; state.lang = 'all'; state.view = 'pp';
+    q.value = ''; syncControls(); render(); body.scrollTop = 0; body.focus();
+  });
+
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && state.page !== null) leavePage();
+  });
+
+  // Controls are useful only after the static entries have been read.
+  root.classList.add('on');
+  render();
+})();
+</script>
+</section>

@@ -1,0 +1,42 @@
+cff-version: 1.2.0
+message: "If you refer to this transcription or its findings, please cite it as below."
+title: "excursoria: a Prolog reading of the index to Flora Excursoria Hafniensis (1838)"
+abstract: >-
+  A transcription of the 903-name index to Salomon Thomas Nicolai Drejer's
+  Flora Excursoria Hafniensis (Kjøbenhavn, 1838), with a Prolog reading of it.
+  The index interfiles Latin and Danish plant names in one alphabetical
+  sequence and prints no translations; because a plant's Latin and Danish
+  names were set on the same page, the page number works as a join key and
+  part of the pairing is recoverable. The repository also states the five
+  collation rules that recover the printed order, and the eight entries they
+  fail to place.
+type: dataset
+authors:
+  - family-names: Bergholt
+    given-names: Kasper
+    city: Copenhagen
+    country: DK
+    website: "https://bergholt.net"
+repository-code: "https://github.com/bergholt/excursoria"
+url: "https://bergholt.net/flora"
+license: MIT
+keywords:
+  - Prolog
+  - digital humanities
+  - historical botany
+  - Danish plant names
+  - bilingual index
+  - collation
+  - textual scholarship
+  - Flora Danica
+references:
+  - type: book
+    title: "Flora Excursoria Hafniensis"
+    authors:
+      - family-names: Drejer
+        given-names: Salomon Thomas Nicolai
+    year: 1838
+    publisher:
+      name: "Sumtibus Librariæ Schubothianæ"
+    location:
+      name: "Kjøbenhavn"
