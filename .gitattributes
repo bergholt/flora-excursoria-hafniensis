@@ -1,7 +1,3 @@
 # .pl is ambiguous between Perl, Prolog and Raku. Linguist guesses from
 # content; state it, so the repository is not labelled Perl.
 *.pl linguist-language=Prolog
-
-# The transcription and its CSV are source, not vendored or generated noise.
-index.pl        linguist-detectable=true
-data/index.csv  linguist-detectable=false
