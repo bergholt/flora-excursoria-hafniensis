@@ -1,14 +1,19 @@
 {
-  "title": "Flora Excursoria Hafniensis",
-  "upload_type": "dataset",
-  "description": "A botanical index and reference dataset based on Flora Excursoria Hafniensis.",
+  "title": "Flora Excursoria Hafniensis (1838) index, transcribed and analysed in Prolog",
+  "upload_type": "software",
+  "creators": [
+    {
+      "name": "Bergholt, Kasper"
+    }
+  ],
+  "description": "Transcription and Prolog-based analysis of the historical botanical index Flora Excursoria Hafniensis (1838).",
   "keywords": [
+    "prolog",
     "botany",
-    "flora",
-    "botanical index",
-    "taxonomy",
-    "Copenhagen",
-    "Flora Excursoria Hafniensis"
+    "digital humanities",
+    "flora excursoria hafniensis",
+    "transcription",
+    "taxonomy"
   ],
   "access_right": "open",
   "license": "CC-BY-4.0"
