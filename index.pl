@@ -1,5 +1,5 @@
 :- encoding(utf8).
-% index.pl — the index of 'Flora Excursoria Hafniensis' (Copenhagen, 1838)
+% index.pl — the index of 'Flora Excursoria Hafniensis' (Kjøbenhavn, 1838)
 %
 % entry(Name, Page, Language).
 %   Language is la (Latin) or da (Danish).
@@ -8,9 +8,15 @@
 % (Kjøbenhavn 1838), in printed order and printed orthography. Nothing is
 % corrected here. Corrections belong in flora.pl, as inferences, not as edits.
 %
-% 903 entries. 501 Latin, 402 Danish. 233 distinct pages, 1-320.
-
-:- discontiguous entry/3.
+% Clause order is the printed order, and is therefore data: printed/1 and
+% every position downstream of it read the order of these facts. Do not sort.
+%
+% 903 entries. 501 Latin, 402 Danish. 233 distinct pages, 1-320. No name
+% recurs; build.pl enforces it.
+%
+% Two spellings await collation with the photographs and stand as printed:
+% Phragimtes 29 (Phragmites?) and Epigogium 280 (Epipogium?). Like
+% Gyclqvæler 214, each is marked where it occurs.
 
 entry('Aakande', 189, da).
 entry('Abies', 305, la).
@@ -253,7 +259,7 @@ entry('Engblomme', 198, da).
 entry('Engelsöd', 314, da).
 entry('Enodium', 40, la).
 entry('Entian', 88, da).
-entry('Epigogium', 280, la).
+entry('Epigogium', 280, la).   % as printed; Epipogium? the photographs decide
 entry('Epilobium', 148, la).
 entry('Epipactis', 279, la).
 entry('Eqvisetum', 320, la).
@@ -337,7 +343,7 @@ entry('Gulddusk', 83, da).
 entry('Guldstjerne', 134, da).
 entry('Gulerod', 112, da).
 entry('Guulax', 29, da).
-entry('Gyclqvæler', 214, da).
+entry('Gyclqvæler', 214, da).  % sic: misprint for Gyvelkvæler, filing legally
 entry('Gyldenriis', 268, da).
 entry('Gymnadenia', 275, la).
 entry('Gypsophila', 159, la).
@@ -637,7 +643,7 @@ entry('Peucedanum', 112, la).
 entry('Phalaris', 25, la).
 entry('Phellandrium', 118, la).
 entry('Phleum', 24, la).
-entry('Phragimtes', 29, la).
+entry('Phragimtes', 29, la).   % as printed; Phragmites? the photographs decide
 entry('Phyteuma', 93, la).
 entry('Picris', 252, la).
 entry('Pigfrö', 74, da).
