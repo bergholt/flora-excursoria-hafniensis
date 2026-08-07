@@ -8,11 +8,12 @@ abstract: >-
   sequence and prints no translations; because a plant's Latin and Danish
   names were set on the same page, the page number works as a join key and
   part of the pairing is recoverable. The repository also states the five
-  collation rules that recover the printed order, and the eight entries they
-  fail to place.
+  collation rules that recover the printed order, and the eight inversions that
+  remain, one of them by design.
 type: dataset
 version: 1.0.0
 date-released: 2026-08-06
+# doi: 10.5281/zenodo.XXXXXXX   (archive the v1.0.0 tag on Zenodo, then uncomment)
 authors:
   - family-names: Bergholt
     given-names: Kasper
@@ -33,7 +34,6 @@ keywords:
   - bilingual index
   - collation
   - textual scholarship
-  - Flora Danica
 references:
   - type: book
     title: "Flora Excursoria Hafniensis"
@@ -42,6 +42,8 @@ references:
         given-names: Salomon Thomas Nicolai
     year: 1838
     publisher:
+      # The imprint formula as printed; sumtibus = "at the expense of".
+      # The firm is the Schubothe bookshop. Transcription kept, like Kjøbenhavn.
       name: "Sumtibus Librariæ Schubothianæ"
     location:
       name: "Kjøbenhavn"
