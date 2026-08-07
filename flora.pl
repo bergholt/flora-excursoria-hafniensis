@@ -9,7 +9,8 @@
 %
 % Two things follow, and only two. The join, which is defeasible and says so.
 % And a statement of the alphabet the index was sorted by, which can be tested
-% against the printed order and fails on eight entries out of 903.
+% against the printed order and fails on eight entries out of 903, one of
+% them by design.
 %
 %   swipl flora.pl
 %   ?- census.
@@ -125,9 +126,15 @@ stray(Danish, Page, Latin, Near) :-
 % Rules 4 and 5 contradict each other and the index applies both, so
 % Ægopodium files under A and Ært files after Z. Rule 2 rests on the single
 % pair that requires it; the rest are supported many times over.
+%
+% There is no rule for Å, because the index contains none: 1838 spells the
+% sound Aa, which files under A. The alphabet states nothing the printed
+% order cannot test.
 
 vowel(C) :- memberchk(C, [a,e,i,o,u,y,æ,ö,å]).
 
+% downcase_atom/2 is locale-dependent outside ASCII — under the C locale it
+% leaves Æ, Ö and Å as they are — so the three are spelt out.
 lower('Æ', æ) :- !.
 lower('Ö', ö) :- !.
 lower('Å', å) :- !.
@@ -140,6 +147,12 @@ collate(æ, la, _,    ae)   :- !.
 collate(æ, da, _,    '{')  :- !.
 collate(ö, _,  _,    '|')  :- !.
 collate(C, _,  _,    C).
+
+% Danish æ and ö are keyed as '{' and '|', the two codepoints after z, so
+% that they sort last. These facts are that encoding's one home; build.pl's
+% section/2 maps first characters of keys back to section letters.
+key_section('{', æ).
+key_section('|', ö).
 
 fold([],     _, _,    []).
 fold([C|Cs], L, Prev, [K|Ks]) :-
@@ -170,7 +183,7 @@ alphabetical(Names) :-
 % Eight. Four are plain transpositions of neighbours; Jacobsurt/Jacobæa is not
 % an error at all but the one place where rules 4 and 5 meet, in the Danish
 % and Latin names for the same plant, on the same page. Whether the remaining
-% seven are the compositor's or the transcription's, only the book decides.
+% seven are the compositor's or the transcription's, the photographs decide.
 misfiled(A, B) :-
     printed(Names),
     nextto(A, B, Names),
@@ -243,4 +256,12 @@ census :-
 
 row(Label, N) :- format("~s~t~42|~d~n", [Label, N]).
 
-:- initialization(census, main).
+% Print the census when flora.pl is the file on the command line, and stay
+% silent when another file loads it. Either way the toplevel is left open:
+% initialization/1 runs after loading and does not halt, unlike the main
+% variant, which would end the session the census was meant to open.
+:- (   current_prolog_flag(associated_file, File),
+       prolog_load_context(source, File)
+   ->  initialization(census)
+   ;   true
+   ).
