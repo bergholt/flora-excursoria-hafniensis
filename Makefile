@@ -1,3 +1,8 @@
+# Makefile — build, check, test. The three targets the README names;
+# the equivalent direct commands are listed there under Usage.
+#
+#   make check SWIPL=/path/to/swipl   overrides the Prolog used
+
 SWIPL ?= swipl
 
 .PHONY: build check test
