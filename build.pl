@@ -17,8 +17,8 @@
 
 :- use_module(library(aggregate), [aggregate_all/3]).
 :- use_module(library(apply),     [foldl/4]).
-:- use_module(library(filesex),   [make_directory_path/1]).
-:- use_module(library(lists),     [member/2, memberchk/2]).
+:- use_module(library(filesex),   [directory_file_path/3, make_directory_path/1]).
+:- use_module(library(lists),     [append/3, member/2, memberchk/2]).
 
 :- dynamic project_directory/1.
 :- prolog_load_context(directory, Directory),
@@ -30,6 +30,9 @@ project_path(Relative, Path) :-
 
 % ------------------------------------------------------------------ rows
 
+% flora.pl's sort_key/2 encodes Danish æ and ö as '{' and '|', the two
+% codepoints after z, so that they sort last. This clause is the one other
+% place that encoding is known; if it changes there, change it here.
 section(Name, Sec) :-
     sort_key(Name, Key),
     sub_atom(Key, 0, 1, _, First),
@@ -59,9 +62,11 @@ csv_field(Atom, Field) :-
     ).
 
 csv_needs_quotes(String) :-
-    memberchk(Char, [",", "\"", "\n", "\r"]),
+    member(Char, [",", "\"", "\n", "\r"]),   % member, not memberchk: Char must backtrack
     sub_string(String, _, _, _, Char), !.
 
+% Recurses on the tail only, so a replacement that contains the character —
+% as "" does — is never reprocessed.
 replace_char(Source, Character, Replacement, Result) :-
     (   sub_string(Source, Before, Length, After, Character)
     ->  sub_string(Source, 0, Before, _, Head),
@@ -188,7 +193,23 @@ validate_data :-
     ;   format(user_error, "Entry names must be unique; found ~d rows and ~d unique names.~n",
                [Count, UniqueCount]),
         fail
+    ),
+    % Every inversion in the index is intra-section, so the sections of the
+    % printed order form runs that never come back. emit_row/3 relies on it:
+    % a section that recurred would print a second heading with the same id.
+    findall(Sec, (entry(EntryName, _, _), section(EntryName, Sec)), Sections),
+    collapse_runs(Sections, Runs),
+    (   append(_, [Repeat|Later], Runs), memberchk(Repeat, Later)
+    ->  format(user_error, "Section ~w recurs in printed order; the index would print duplicate headings.~n",
+               [Repeat]),
+        fail
+    ;   true
     ).
+
+collapse_runs([], []).
+collapse_runs([X], [X]).
+collapse_runs([X, X|T], Runs) :- !, collapse_runs([X|T], Runs).
+collapse_runs([X, Y|T], [X|Runs]) :- collapse_runs([Y|T], Runs).
 
 wordpress_hazard(Line) :-
     sub_string(Line, Before, 1, _, "<"),
@@ -197,7 +218,7 @@ wordpress_hazard(Line) :-
 
 wordpress_safe(Html) :-
     split_string(Html, "\n", "", Lines),
-    findall(Line, (member(Line, Lines), wordpress_hazard(Line)), Bad),
+    findall(Line, (member(Line, Lines), once(wordpress_hazard(Line))), Bad),
     (   Bad == []
     ->  true
     ;   format(user_error,
@@ -208,6 +229,11 @@ wordpress_safe(Html) :-
 
 file_matches(Relative, Expected) :-
     project_path(Relative, Path),
+    (   exists_file(Path)
+    ->  true
+    ;   format(user_error, "Generated file is missing: ~w (run make build).~n", [Relative]),
+        fail
+    ),
     read_file_to_string(Path, Actual, [encoding(utf8)]),
     (   Actual == Expected
     ->  true
