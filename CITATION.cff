@@ -11,9 +11,9 @@ abstract: >-
   collation rules that recover the printed order, and the eight inversions that
   remain, one of them by design.
 type: dataset
-version: 1.0.0
-date-released: 2026-08-06
-# doi: 10.5281/zenodo.XXXXXXX   (archive the v1.0.0 tag on Zenodo, then uncomment)
+version: 1.0.1
+date-released: 2026-08-12
+# doi: 10.5281/zenodo.XXXXXXX   (add the concept DOI after the first successful deposit)
 authors:
   - family-names: Bergholt
     given-names: Kasper
@@ -23,9 +23,11 @@ authors:
     website: "https://bergholt.net"
 repository-code: "https://github.com/bergholt/flora-excursoria-hafniensis"
 url: "https://bergholt.net/flora"
-license:
-  - MIT
-  - CC-BY-4.0
+# One SPDX identifier only. A list here is valid CFF but converts to
+# license.id as an array, which Zenodo's deposit metadata rejects —
+# this is what failed the v1.0.0 deposit. Dual licensing, if wanted,
+# belongs in LICENSE and in the Zenodo record's own licence field.
+license: MIT
 keywords:
   - Prolog
   - digital humanities
